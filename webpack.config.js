@@ -1,7 +1,17 @@
+var path = require('path');
 module.exports = {
-  entry: './index.js',
+  entry: {
+    app: ['./app/index.js']
+  },
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }]
   }
 };
